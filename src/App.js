@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
-import Filho from "./Filho";
+import { Filho, MeuComponente } from "./Filho";
+import { Blog, VoltarPrincipal } from "./Atividade2";
+import Atividade2 from "./Atividade2";
 
 
 const App = () => {
@@ -13,33 +16,36 @@ const App = () => {
     });
 
     const Buscar = async () => {
-        const url = `http://viacep.com.br/ws/${formData.cep}/json/`;
-        await axios
-            .get(url)
-            .then((retorno) => {
-                setFormData({
-                    ...formData,
-                    endereco: retorno.data.logradouro,
-                    bairro: retorno.data.bairro,
-                    cidade: retorno.data.localidade,
-                    estado: retorno.data.uf,
-                });
-            })
-            .catch(() => {
-                console.log("Erro ao buscar o CEP");
+        try {
+            const url = `http://viacep.com.br/ws/${formData.cep}/json/`;
+            const retorno = await axios.get(url);
+            setFormData({
+                ...formData,
+                endereco: retorno.data.logradouro,
+                bairro: retorno.data.bairro,
+                cidade: retorno.data.localidade,
+                estado: retorno.data.uf,
             });
-
-        console.log("testeeeeeeeeeeeeee");
+        } catch (error) {
+            console.log("Erro ao buscar o CEP");
+        }
     };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const irParaOutraAtividade = () => {
-        window.location.href = "/outra-pagina"; 
-    };
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<PaginaPrincipal formData={formData} handleChange={handleChange} Buscar={Buscar} />} />
+                <Route path="/outra-atividade" element={<Blog />} />
+            </Routes>
+        </Router>
+    );
+};
 
+const PaginaPrincipal = ({ formData, handleChange, Buscar }) => {
     return (
         <div style={{ maxWidth: "300px", margin: "20px auto", padding: "25px", border: "1px solid #ccc" }}>
             <h3>Endereço</h3>
@@ -48,6 +54,8 @@ const App = () => {
             <Filho label="Bairro" name="bairro" value={formData.bairro} onChange={handleChange} />
             <Filho label="Cidade" name="cidade" value={formData.cidade} onChange={handleChange} />
             <Filho label="Estado" name="estado" value={formData.estado} onChange={handleChange} />
+
+            <MeuComponente />
             
         </div>
     );

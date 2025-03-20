@@ -1,4 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+
+const MeuComponente = () => {
+  const navigate = useNavigate();
+
+  const irParaOutraAtividade = () => {
+      navigate("/outra-atividade"); 
+  };
+
+  return (
+      <div>
+          <input type="button" value="Ir para a outra atividade" onClick={irParaOutraAtividade} />
+      </div>
+  );
+};
 
 const Filho = ({ label, name, value, onChange, onBlur }) => {
   return (
@@ -16,4 +32,6 @@ const Filho = ({ label, name, value, onChange, onBlur }) => {
   );
 };
 
-export default Filho;
+export { Filho, MeuComponente };
+
+
