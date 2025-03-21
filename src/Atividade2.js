@@ -6,7 +6,7 @@ const VoltarPrincipal = () => {
   
     const irParaOutraAtividade = () => {
         console.log("testeeeeeeeeeeeeee")
-        navigate("/"); 
+        navigate("/Mui.js"); 
     };
   
     return (
