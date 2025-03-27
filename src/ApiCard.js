@@ -32,7 +32,7 @@ const Carde = ({ personagem }) => {
   );
 };
 
-const CharacterList = () => {
+const ListaPersonagens = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -64,4 +64,4 @@ const CharacterList = () => {
   );
 };
 
-export default CharacterList;
+export default ListaPersonagens;
