@@ -4,4 +4,4 @@ Rick
 
 and Morty
 
-![morty](https://github.com/user-attachments/assets/7978ebc7-a577-4d7d-b2f6-5d8b90c75713)
+![morty](https://github.com/user-attachments/assets/e5c9b615-d4d9-4d78-be44-5b53d7607c82)
