@@ -1,45 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './home/home';
+import Login from './Login/login';
+import Cadastro from './Cadastro/cadastro';
 
 import App from './App'
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/ApiCard" element={<App />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function Texto(){
-//   var [ valor, setValor] = React.useState()
-//   function mudarValor (e){
-//     setValor(e.target.value * 5)
-//   } 
-//   return (
-//     <div>
-//       <input type="text"
-//         onChange={ (e) => mudarValor(e)}
-//         />
-//         <spam> {valor} </spam>
-
-//         <hr/>
-//     </div>
-
-//   )
-// }
